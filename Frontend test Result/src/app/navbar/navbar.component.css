@@ -1,0 +1,77 @@
+.navbar {
+    margin-bottom: 1rem;
+    border-radius: 0%;
+  }
+  
+  .myprofile {
+    width: 90px;
+  }
+  
+  button {
+    margin-left: 10px;
+  }
+  
+  h1 {
+    font-size: 36px;
+    font-family: Roboto Slab;
+    font-weight: 500;
+    margin-top: 10px;
+    color: #e3edfa;
+  }
+  
+  .heading {
+    background-color: #4C535D;
+    color: white;
+    height: 60px;
+  }
+  
+  a {
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 5px;
+    color: #e3edfa;
+  }
+  
+  .headingStart {
+    background-color: #4C535D;
+  }
+  
+  .isAdmin,
+  .isEmployee {
+    background-color: #4C535D;
+   
+    height: 65px; color: white;
+  }
+  
+  .content {
+    width: 460px;
+  }
+  
+  .linkadd {
+    width: 115px;
+  }
+  
+  .logOut {
+    color:#e3edfa;
+    width: 60px;
+  }
+  
+  .signUp {
+    width: 100px;
+  }
+  
+  .isLoggedIn {
+    height: 70px;
+    background-color: #4C535D;
+    color: white;
+  }
+
+  .bookingDetails{
+    width: 154px;
+    margin-left: 10px;
+  }
+
+  .bookingDetailsshort{
+    width: 124px;
+    margin-left: 10px;
+  }

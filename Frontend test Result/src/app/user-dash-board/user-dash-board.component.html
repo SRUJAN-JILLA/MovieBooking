@@ -1,0 +1,30 @@
+<div class="main">
+    <div class="input-group mb-3">
+        <span color="primary" class="input-group-text" id="inputGroup-sizing-default" style="color: white;background-color: #4e62cf;">Search</span>
+        <input type="text"  [(ngModel)]="searchArea" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+    </div>
+    <div class="container1">
+        <div *ngFor="let movie of movieDetails | customPipe:searchArea" class="tile">
+            <div class="box">      
+                <br>
+                <b>Movie:</b> {{movie.movieName}} <br>
+                <b>Theater:</b> {{movie.theaterName}} <br>
+                <b>Status:</b> 
+                    <span *ngIf=checkStatus(movie)> Available</span>
+                    <span *ngIf=!checkStatus(movie)> Not Available</span>
+                    <br>
+                <b>Number of Tickets Available:</b> {{movie.totalNumberOfTicketsInTheater - movie.totalNumberOfTicketsBooked}}
+                <br>
+                <div *ngIf="!isAdmin()">
+                <button [disabled]="!movie.status" type="submit" id="movie" class="btn btn-dark btn-block" (click) = "bookTicket(movie.id, movie.movieName)">Book tickets</button>
+                </div> 
+                <div *ngIf="isAdmin()">
+                    <button type="submit" class="btn btn-dark btn-block" (click) = "updateStatus(movie.id, movie.status)">Update Status</button><br>
+                    <button type="submit" class="btn btn-dark btn-block" (click) = "deleteMovie(movie.id)">Delete Movie</button>
+                </div>      
+            </div> 
+        </div>
+    </div>
+    </div>
+    
+    

@@ -1,0 +1,25 @@
+<div class="main">
+
+<table class = "table table-striped">
+    <thead>
+        <tr>
+            <th> Ticket Id</th>
+            <th *ngIf="isAdmin()"> Movie Id </th>
+            <th *ngIf="!isAdmin()"> Movie Name</th>
+            <th> User Id </th>
+            <th> No Of Tickets Booked</th>
+            <th> Seat Numbers </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let ticketDetail of ticketDetails" >
+            <td> {{ ticketDetail.id }} </td>
+            <td *ngIf="isAdmin()"> {{ ticketDetail.movieId }} </td>
+            <td *ngIf="!isAdmin()"> {{ getMovieName(ticketDetail.movieId) }} </td>
+            <td> {{ ticketDetail.userId }} </td>
+            <td> {{ ticketDetail.numberOfTicketsBookedByUser }} </td>
+            <td> {{ ticketDetail.seatNumbers }} </td>
+        </tr>
+    </tbody>
+</table>
+</div>

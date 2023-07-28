@@ -1,0 +1,27 @@
+.main{
+    width: 80%;
+    text-align: center;
+    margin: auto;
+}
+#container1 {
+    width: 230px;
+    height: 215px;
+    float: left;
+    margin-bottom: 50px;
+ }
+ .box{
+    background-color:rgb(218, 217, 217);
+    width: 250px;
+    height: 300px;
+    margin: 25px;
+    float: left;
+    border: 2px;
+    border-style: outset;
+    line-height: 2.6;
+    
+ }
+
+ button{
+    width: 70%;
+    margin: 7px;
+ }

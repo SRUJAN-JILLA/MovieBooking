@@ -1,0 +1,105 @@
+<body>
+    <div class="signup-form">
+      <form (ngSubmit)="formSubmit()" #userForm="ngForm">
+        <h2>Sign Up</h2>
+        <br>
+        <div class="form-group">
+          <input [(ngModel)]="user.firstName" [class.is-invalid]="firstName.invalid && firstName.touched"
+            id="firstName" ngModel required #firstName="ngModel" pattern="^[a-zA-Z0-9._]{3,15}$" type="text"
+            class="form-control" name="firstName" placeholder="First Name">
+          <div *ngIf="firstName.invalid && firstName.touched">
+            <small class="text-danger" *ngIf="firstName.errors?.required">First name is required.</small>
+            <small class="text-danger" *ngIf="firstName.errors?.pattern">First name should be of length 2-15 and no
+              symbols are allowed otherthan '.', '_'.</small>
+          </div>
+        </div>
+        <div class="form-group">
+          <input [(ngModel)]="user.lastName" id="lastName" ngModel pattern="^[a-zA-Z0-9._]{3,15}$" #lastName="ngModel"
+            required type="text" class="form-control" name="lastName"
+            [class.is-invalid]="lastName.invalid && lastName.touched" placeholder="Last Name">
+          <div *ngIf="lastName.invalid && lastName.touched">
+            <small class="text-danger" *ngIf="lastName.errors?.required">Last name is required.</small>
+            <small class="text-danger" *ngIf="lastName.errors?.pattern">Last name should be of length 2-15 and no symbols
+              are allowed otherthan '.', '_'.</small>
+          </div>
+        </div>
+        <div class="form-group">
+            <input [(ngModel)]="user.loginId" #loginId="ngModel" id="loginId" required
+              [class.is-invalid]="loginId.invalid && loginId.touched" type="text" class="form-control" name="loginId" ngModel
+              placeholder="loginId">
+              <small class="text-danger" *ngIf="checkEmailLoginId">Login Id or email already exsists!</small>
+            <div *ngIf="loginId.invalid && loginId.touched">
+              <small class="text-danger" *ngIf="loginId.errors?.required">Login Id is required.</small>
+            </div>
+          </div>
+        <div class="form-group">
+          <input [(ngModel)]="user.email" ngModel #email="ngModel" id="email"
+            pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" [class.is-invalid]="email.invalid && email.touched"
+            required type="email" class="form-control" name="email" placeholder="Email Address">
+          <small class="text-danger" *ngIf="checkEmailLoginId">Login Id or email already exsists!</small>
+          <div *ngIf="email.invalid && email.touched">
+            <small class="text-danger" *ngIf="email.errors?.required">Email is required.</small>
+            <small class="text-danger" *ngIf="email.errors?.pattern">Enter valid emial id.</small>
+          </div>
+        </div>
+        <div class="form-group">
+          <input [(ngModel)]="user.password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,20}$"
+            required id="password" #password="ngModel" [class.is-invalid]="password.invalid && password.touched" ngModel
+            type="password" class="form-control" name="password" placeholder="Password">
+          <small class="text-danger" *ngIf="checkPassword">Passwords don't match!</small>
+          <div *ngIf="password.invalid && password.touched">
+            <small class="text-danger" *ngIf="password.errors?.required">Password is required.</small>
+            <small class="text-danger" *ngIf="password.errors?.pattern">
+              Passowrd should be in following pattern.<br>
+              <ul>
+                <li> At least 1 Uppercase</li>
+                <li>At least 1 Lowercase</li>
+                <li>At least 1 Number</li>
+                <li>At least 1 Symbol, symbol allowed --> !@#$%^&*_=+-</li>
+                <li>Min 8 chars and Max 15 chars</li>
+              </ul>
+            </small>
+          </div>
+        </div>
+        <div class="form-group">
+          <input [(ngModel)]="confirmPassword" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,20}$"
+            required id="passwordConfirm" #passwordConfirm="ngModel"
+            [class.is-invalid]="passwordConfirm.invalid && passwordConfirm.touched" ngModel type="password"
+            class="form-control" name="passwordConfirm" placeholder="Confirm Password">
+          <small class="text-danger" *ngIf="checkPassword">Passwords don't match!</small>
+          <div *ngIf="passwordConfirm.invalid && passwordConfirm.touched">
+            <small class="text-danger" *ngIf="passwordConfirm.errors?.required">Password is required.</small>
+            <small class="text-danger" *ngIf="passwordConfirm.errors?.pattern">
+              Passowrd should be in following pattern.<br>
+              <ul>
+                <li> At least 1 Uppercase</li>
+                <li>At least 1 Lowercase</li>
+                <li>At least 1 Number</li>
+                <li>At least 1 Symbol, symbol allowed --> !@#$%^&*_=+-</li>
+                <li>Min 8 chars and Max 15 chars</li>
+              </ul>
+            </small>
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <input [(ngModel)]="user.contactNumber" required pattern="^[0-9]{0,20}$" #contactNumber="ngModel" id="contactNumber"
+            [class.is-invalid]="contactNumber.invalid && contactNumber.touched" ngModel type="text" class="form-control" name="contactNumber"
+            placeholder="contactNumber">
+          <div *ngIf="contactNumber.invalid && contactNumber.touched">
+            <small class="text-danger" *ngIf="contactNumber.errors?.required">contactNumber is required.</small>
+            <small class="text-danger" *ngIf="contactNumber.errors?.pattern">contactNumber should be numeric.</small>
+          </div>
+        </div>
+
+        <div class="form-group signupbutton">
+          <button
+            [disabled]="firstName.errors || firstName.invalid || lastName.errors || lastName.invalid || loginId.errors || loginId.invalid || contactNumber.errors || contactNumber.invalid || email.errors || 
+                  email.invalid || password.invalid || password.errors || passwordConfirm.invalid || passwordConfirm.errors"
+            type="submit" class="btn btn-primary btn-block btn-lg ">Sign Up</button>
+        </div>
+      </form>
+      <div class="text-center navToLoginSign">Already have an account? <span (click)="login()" class="login">Login
+          here</span></div>
+    </div>
+  </body>
